@@ -1,0 +1,102 @@
+<html>
+    <head>
+            <style>
+                   @font-face {
+                   font-family: 'Candyshop'; src: url(fonts/Candyshop.ttf)
+                              }
+            </style>
+            
+            <meta charset="utf-8">
+            
+            <title>Gerador de senhas</title>
+            
+            <style>
+                    *{
+                      margin: 0; 
+                      padding: 0;  
+                       }
+                    .G1{
+                      background-image: linear-gradient(3deg,pink,white);
+                      height: 100vh;
+                      text-align: center;
+                      margin-top: 10px;
+                    }
+            </style>
+    </head>
+    
+    <body>
+             <div class="G1">
+              <span style="font-family: Candyshop; font-size: 65px">Gerador de Senha</span>
+              <br> <br>
+              <input type="text" id="resultado" style="border-radius: 5px; border-color: pink" readonly>
+              <br> <br>
+              <input type="range" min="6" max="25" step="1" id="barrinha" value="12">
+              <br><br>
+              <input type="checkbox" id="cxnumero"> <span> Números</span>
+              <input type="checkbox" id="cxmaius"> <span> Maiusculas</span>
+              <input type="checkbox" id="cxcaracsp">  <span> Caracteres especiais</span>
+              <br><br>
+              <button id="btngerar" style="background-color: white; border-radius: 5px; border-color: pink">Gerar nova senha</button>
+         </div>  
+         <script>
+                 var btn= document.querySelector("#btngerar")
+                 btn.addEventListener("click",function(){
+                 var caract= document.getElementById("barrinha").value
+                 var nume=document.getElementById("cxnumero").checked
+                 var maiusc=document.getElementById("cxmaius").checked
+                 var caracsp=document.getElementById("cxcaracsp").checked
+                 gerarSenha(caract,nume,maiusc,caracsp)
+                 })
+                 function gerarSenha(caract,nume,maiusc,caracsp){
+                 var letras="abcdefghijklmnopqrstuvwxyz"
+                 var letrasMaiuscula="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                 var numeros="0123456789"
+                 var especiais="!@#$%ˆ&*()+?><:{}[]"
+                 
+                 var letras2=""
+                 var letrasMaiuscula2=""
+                 var numeros2=""
+                 var especiais2="" 
+                 var senha=""
+                 
+                 var contador=1
+                 if(nume==true){
+                  contador++ 
+                 }
+                 if(maiusc==true){
+                  contador++ 
+                 }
+                 if(caracsp==true){
+                  contador++ 
+                 }
+                 var divisao=caract/contador
+                 
+                 for(var i=0;i<divisao;i++){
+                 var letraAlea=Math.floor(Math.random()*letras.length)
+                 letras2+=letras.substring(letraAlea,letraAlea+1)
+                 
+                 if(nume==true){
+                  var numerosAlea=Math.floor(Math.random()*numeros.length)
+                 numeros2+=numeros.substring(numerosAlea,numerosAlea+1)
+                 }
+                 if(maiusc==true){
+                   var maiusculasAlea=Math.floor(Math.random()*letrasMaiuscula.length)
+                 letrasMaiuscula2+=letrasMaiuscula.substring(maiusculasAlea,maiusculasAlea+1)
+                 }
+                 if(caracsp==true){
+                 var caracsspAlea=Math.floor(Math.random()*especiais.length)
+                 especiais2+=especiais.substring(caracsspAlea,caracsspAlea+1)
+                 }
+                 }
+                 senha=letras2+numeros2+letrasMaiuscula2+especiais2
+                 senha=senha.split("")
+                 senha=senha.sort()
+                 senha=senha.sort().join("")
+                 document.getElementById("resultado").value =senha
+                 var copresult=document.getElementById("resultado")
+                 copresult.select()
+                 document.execCommand("copy")
+                 }
+         </script>
+    </body>
+</html> 
