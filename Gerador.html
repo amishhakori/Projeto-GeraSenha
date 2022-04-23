@@ -20,7 +20,16 @@
                       height: 100vh;
                       text-align: center;
                       margin-top: 10px;
+                      text-shadow: 3px 3px 9px pink;
                     }
+                 #btngerar{
+                   box-shadow: 3px 3px 9px pink;
+                    }
+                 #resultado{
+                   box-shadow: 3px 3px 9px pink;
+                   text-align: center;
+                    }
+                  
             </style>
     </head>
     
@@ -28,15 +37,15 @@
              <div class="G1">
               <span style="font-family: Candyshop; font-size: 65px">Gerador de Senha</span>
               <br> <br>
-              <input type="text" id="resultado" style="border-radius: 5px; border-color: pink" readonly>
+              <input type="text" id="resultado" style="border-radius: 7px; border-color: pink" readonly>
               <br> <br>
-              <input type="range" min="6" max="25" step="1" id="barrinha" value="12">
+              <input type="range" min="1" max="18" step="1" id="barrinha" value="12">
               <br><br>
-              <input type="checkbox" id="cxnumero"> <span> Números</span>
-              <input type="checkbox" id="cxmaius"> <span> Maiusculas</span>
-              <input type="checkbox" id="cxcaracsp">  <span> Caracteres especiais</span>
+              <input type="checkbox" id="cxnumero"> <label for="cxnumero">Numeros</label>
+              <input type="checkbox" id="cxmaius"> <label for="cxmaius">Maiúsculas</label>
+              <input type="checkbox" id="cxcaracsp"> <label for="cxcaracsp">Caracteres especiais</label>
               <br><br>
-              <button id="btngerar" style="background-color: white; border-radius: 5px; border-color: pink">Gerar nova senha</button>
+              <button id="btngerar" style="background-color: white; border-radius: 7px; border-color: pink">Gerar nova senha</button>
          </div>  
          <script>
                  var btn= document.querySelector("#btngerar")
